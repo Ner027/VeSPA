@@ -31,7 +31,7 @@ regfile _RegFile(
     .i_AddrA(_AddrA),
     .i_AddrB(_AddrB),
     .i_AddrW(_AddrW),
-    .i_RnW(i_RfRnW),
+    .i_RfW(i_RfRnW),
     .i_EnB(i_EnB),
     .i_Input(_RegIn),
     .o_OutA(_RfA),
@@ -83,7 +83,8 @@ assign _OpR = (i_OpSel) ? {({16{_Imm16[15]}}), _Imm16} : _RfA;
 //Or calculated from a 17bit immediate + a value provided by the register file
 assign _MemAddr = (i_MSel == 2'b00) ? _PCounter :
                   (i_MSel == 2'b01) ? _Imm16:
-                  (i_MSel == 2'b10) ? ({{14{_Imm17[16]}}, _Imm16} + _RfA) : _MemAddr;
+                  (i_MSel == 2'b10) ? ({{16{_Imm16[15]}}, _Imm16} + _RfA) :
+                  (i_MSel == 2'b10) ? ({{15{_Imm17[16]}}, _Imm17} + _Idx) : _MemAddr;
 
 //Register file addresses
 assign _AddrW = _RegDst;
@@ -110,15 +111,15 @@ always @(posedge i_Clk) begin
     else begin
         if (i_PCLoad) begin
             //Normal Execution
-            if (i_PCLoad == 2'b00) begin
+            if (i_PCSel == 2'b00) begin
                 _PCounter <= _PCounter + 4;
             end
             //Branch
-            else if (i_PCLoad == 2'b01) begin
+            else if (i_PCSel == 2'b01) begin
                 _PCounter <= _Imm23;
             end
             //JMP
-            else if (i_PCLoad == 2'b10) begin
+            else if (i_PCSel == 2'b10) begin
                 _PCounter <= ({({16{_Imm16[15]}}), _Imm16} + _RfA);
             end
             //Invalid Condition

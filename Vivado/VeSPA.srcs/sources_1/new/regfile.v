@@ -3,7 +3,7 @@
 module regfile(
     input i_Clk,
     input i_Rst,
-    input i_RnW,
+    input i_RfW,
     input i_EnB,
     input[4:0] i_AddrW,
     input[4:0] i_AddrA,
@@ -25,7 +25,7 @@ always @(posedge i_Clk) begin
         end
     end
     else begin
-        if (!i_RnW) begin
+        if (i_RfW) begin
             _RegisterFile[i_AddrW] <= i_Input;
         end
         else begin
@@ -40,19 +40,13 @@ always @(i_AddrA or i_AddrB or i_Rst) begin
         o_OutB <= 0;
     end
     else begin
-        if (i_RnW) begin
-            o_OutA <= _RegisterFile[i_AddrA];
-            if (i_EnB) begin
-                o_OutB <= _RegisterFile[i_AddrB];
-            end
-            else begin
-                o_OutB <= 0;
-            end
-        end
-        else begin
-            o_OutA <= o_OutA;
-            o_OutB <= o_OutB;
-        end
+       o_OutA <= _RegisterFile[i_AddrA];
+       if (i_EnB) begin
+           o_OutB <= _RegisterFile[i_AddrB];
+       end
+       else begin
+           o_OutB <= 0;
+       end
     end
 end
 
