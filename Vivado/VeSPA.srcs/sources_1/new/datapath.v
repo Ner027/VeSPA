@@ -6,7 +6,7 @@ module datapath(
     input i_PCLoad,
     input i_IRLoad,
     input i_RnW,
-    input i_RfRnW,
+    input i_RfW,
     input i_EnB,
     input i_OpSel,
     input [1:0] i_PCSel,
@@ -31,7 +31,7 @@ regfile _RegFile(
     .i_AddrA(_AddrA),
     .i_AddrB(_AddrB),
     .i_AddrW(_AddrW),
-    .i_RfW(i_RfRnW),
+    .i_RfW(i_RfW),
     .i_EnB(i_EnB),
     .i_Input(_RegIn),
     .o_OutA(_RfA),
@@ -77,14 +77,14 @@ assign _RegIn = (i_RFSel == 2'b00) ? _AluOut :
 assign _OpL = _RfA;
 
 //Right operand is either provided by the register file, or its a 16bit immediate decoded from the IR
-assign _OpR = (i_OpSel) ? {({16{_Imm16[15]}}), _Imm16} : _RfA;
+assign _OpR = (i_OpSel) ? {({16{_Imm16[15]}}), _Imm16} : _RfB;
 
 //The memmory address can either come from the Program Counter, from a 16bit immediate decoded from the IR
 //Or calculated from a 17bit immediate + a value provided by the register file
 assign _MemAddr = (i_MSel == 2'b00) ? _PCounter :
                   (i_MSel == 2'b01) ? _Imm16:
                   (i_MSel == 2'b10) ? ({{16{_Imm16[15]}}, _Imm16} + _RfA) :
-                  (i_MSel == 2'b10) ? ({{15{_Imm17[16]}}, _Imm17} + _Idx) : _MemAddr;
+                  (i_MSel == 2'b11) ? (_Imm23) : _MemAddr;
 
 //Register file addresses
 assign _AddrW = _RegDst;
@@ -131,7 +131,7 @@ always @(posedge i_Clk) begin
             _PCounter <= _PCounter;
         end
     end
-end
+end 
 
 always @(posedge i_Clk) begin
     if (i_Rst) begin
