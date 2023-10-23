@@ -11,7 +11,7 @@ module memory(
 );
 
 //Internal Variables
-reg [7:0] _Memory [15:0];
+reg [7:0] _Memory [63:0];
 
 always @(posedge i_Clk) begin
 

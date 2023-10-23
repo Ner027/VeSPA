@@ -68,12 +68,16 @@ wire [16:0] _Imm17;
 wire [21:0] _Imm22;
 wire [22:0] _Imm23;
 
+//Memory input
+assign _MemIn = _RfA;
+
 //Register file input
 assign _RegIn = (i_RFSel == 2'b00) ? _AluOut :
                 (i_RFSel == 2'b01) ? _MemOut :
-                (i_RFSel == 2'b10) ? _PCounter : 0;
+                (i_RFSel == 2'b10) ? _PCounter :
+                (i_RFSel == 2'b11) ? _Imm22 : 0;
 
-//Left operatnd is allways aquired from the register file
+//Left operand is allways aquired from the register file
 assign _OpL = _RfA;
 
 //Right operand is either provided by the register file, or its a 16bit immediate decoded from the IR
