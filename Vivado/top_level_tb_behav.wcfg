@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="top_level_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="top_level_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="83.101 ns"></ZoomEndTime>
+      <Cursor1Time time="20.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="187"></NameColumnWidth>
+      <ValueColumnWidth column_width="105"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="38" />
+   <wvobject type="logic" fp_name="/top_level_tb/_dut/_ControlUnit/i_Rst">
+      <obj_property name="ElementShortName">i_Rst</obj_property>
+      <obj_property name="ObjectShortName">i_Rst</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_level_tb/_dut/_ControlUnit/i_Clk">
+      <obj_property name="ElementShortName">i_Clk</obj_property>
+      <obj_property name="ObjectShortName">i_Clk</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_ControlUnit/i_OpCode">
+      <obj_property name="ElementShortName">i_OpCode[4:0]</obj_property>
+      <obj_property name="ObjectShortName">i_OpCode[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_ControlUnit/_CurrentState">
+      <obj_property name="ElementShortName">_CurrentState[5:0]</obj_property>
+      <obj_property name="ObjectShortName">_CurrentState[5:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_ControlUnit/_PrevState">
+      <obj_property name="ElementShortName">_PrevState[5:0]</obj_property>
+      <obj_property name="ObjectShortName">_PrevState[5:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_RegFile/i_AddrW">
+      <obj_property name="ElementShortName">i_AddrW[4:0]</obj_property>
+      <obj_property name="ObjectShortName">i_AddrW[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_RegFile/i_AddrA">
+      <obj_property name="ElementShortName">i_AddrA[4:0]</obj_property>
+      <obj_property name="ObjectShortName">i_AddrA[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_RegFile/i_AddrB">
+      <obj_property name="ElementShortName">i_AddrB[4:0]</obj_property>
+      <obj_property name="ObjectShortName">i_AddrB[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_RegFile/i_Input">
+      <obj_property name="ElementShortName">i_Input[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_Input[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_RegFile/_RegisterFile">
+      <obj_property name="ElementShortName">_RegisterFile[31:0][31:0]</obj_property>
+      <obj_property name="ObjectShortName">_RegisterFile[31:0][31:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_IReg">
+      <obj_property name="ElementShortName">_IReg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">_IReg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Mem/i_Addr">
+      <obj_property name="ElementShortName">i_Addr[22:0]</obj_property>
+      <obj_property name="ObjectShortName">i_Addr[22:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Mem/i_Input">
+      <obj_property name="ElementShortName">i_Input[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_Input[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_level_tb/_dut/_Datapath/_RegFile/i_RfW">
+      <obj_property name="ElementShortName">i_RfW</obj_property>
+      <obj_property name="ObjectShortName">i_RfW</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_level_tb/_dut/_Datapath/_Mem/i_Read">
+      <obj_property name="ElementShortName">i_Read</obj_property>
+      <obj_property name="ObjectShortName">i_Read</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_level_tb/_dut/_Datapath/_Mem/i_Rst">
+      <obj_property name="ElementShortName">i_Rst</obj_property>
+      <obj_property name="ObjectShortName">i_Rst</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_level_tb/_dut/_Datapath/_Mem/i_Clk">
+      <obj_property name="ElementShortName">i_Clk</obj_property>
+      <obj_property name="ObjectShortName">i_Clk</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Mem/i_DLen">
+      <obj_property name="ElementShortName">i_DLen[3:0]</obj_property>
+      <obj_property name="ObjectShortName">i_DLen[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Mem/i_Addr">
+      <obj_property name="ElementShortName">i_Addr[22:0]</obj_property>
+      <obj_property name="ObjectShortName">i_Addr[22:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Mem/i_Input">
+      <obj_property name="ElementShortName">i_Input[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_Input[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Mem/o_Output">
+      <obj_property name="ElementShortName">o_Output[31:0]</obj_property>
+      <obj_property name="ObjectShortName">o_Output[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Mem/_Memory">
+      <obj_property name="ElementShortName">_Memory[127:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">_Memory[127:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_level_tb/_dut/_Datapath/_Alu/i_Rst">
+      <obj_property name="ElementShortName">i_Rst</obj_property>
+      <obj_property name="ObjectShortName">i_Rst</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Alu/i_Operation">
+      <obj_property name="ElementShortName">i_Operation[2:0]</obj_property>
+      <obj_property name="ObjectShortName">i_Operation[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Alu/i_OpL">
+      <obj_property name="ElementShortName">i_OpL[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_OpL[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Alu/i_OpR">
+      <obj_property name="ElementShortName">i_OpR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_OpR[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Alu/o_CCodes">
+      <obj_property name="ElementShortName">o_CCodes[3:0]</obj_property>
+      <obj_property name="ObjectShortName">o_CCodes[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Alu/o_Output">
+      <obj_property name="ElementShortName">o_Output[31:0]</obj_property>
+      <obj_property name="ObjectShortName">o_Output[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_RegFile/o_OutA">
+      <obj_property name="ElementShortName">o_OutA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">o_OutA[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_RegFile/o_OutB">
+      <obj_property name="ElementShortName">o_OutB[31:0]</obj_property>
+      <obj_property name="ObjectShortName">o_OutB[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_level_tb/_dut/_Datapath/_RegFile/i_EnB">
+      <obj_property name="ElementShortName">i_EnB</obj_property>
+      <obj_property name="ObjectShortName">i_EnB</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_RegFile/i_AddrA">
+      <obj_property name="ElementShortName">i_AddrA[4:0]</obj_property>
+      <obj_property name="ObjectShortName">i_AddrA[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_RegFile/i_AddrB">
+      <obj_property name="ElementShortName">i_AddrB[4:0]</obj_property>
+      <obj_property name="ObjectShortName">i_AddrB[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_RegS2">
+      <obj_property name="ElementShortName">_RegS2[4:0]</obj_property>
+      <obj_property name="ObjectShortName">_RegS2[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Alu/i_Operation">
+      <obj_property name="ElementShortName">i_Operation[2:0]</obj_property>
+      <obj_property name="ObjectShortName">i_Operation[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Alu/i_OpL">
+      <obj_property name="ElementShortName">i_OpL[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_OpL[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Alu/i_OpR">
+      <obj_property name="ElementShortName">i_OpR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_OpR[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Alu/o_Output">
+      <obj_property name="ElementShortName">o_Output[31:0]</obj_property>
+      <obj_property name="ObjectShortName">o_Output[31:0]</obj_property>
+   </wvobject>
+</wave_config>

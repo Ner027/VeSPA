@@ -71,8 +71,8 @@ parameter OP_ADD    = 5'b00001,
 /***********************************************************************************************************************
  * Internal Variables
  **********************************************************************************************************************/
-wire _TakeJump, _LinkJump, _Z, _N, _O, _C;
-reg [5:0] _CurrentState;
+wire _TakeJump, _LinkJump, _Z, _N, _O, _C, _RfWAux;
+reg [5:0] _CurrentState, _PrevState;
 
 /***********************************************************************************************************************
  * Condition Code Decoding
@@ -87,6 +87,8 @@ assign _C = i_CCodes[3];
  **********************************************************************************************************************/
 assign o_DLen = 4'b1111;
 
+assign _RfWAux = ((_CurrentState == STATE_INIT) && (_PrevState == OP_LD)) ? 1 : 0;
+
 assign _LinkJump = ((_CurrentState == OP_JMP) && (i_SelBit)) ? 1 : 0;
 
 assign o_Operation = _CurrentState[2:0];
@@ -98,9 +100,11 @@ assign o_IRLoad = (_CurrentState == STATE_FETCH) ? 1 : 0;
 assign o_RnW = ((_CurrentState == OP_ST) || (_CurrentState == OP_STX)) ? 0 : 1;
 
 assign o_RfW = ((_CurrentState == OP_CMP) || (_CurrentState == OP_BXX) || (_CurrentState == OP_JMP) ||
-                (_CurrentState == OP_ST) || (_CurrentState == OP_STX) || (_CurrentState > OP_HLT)) ? 0 : 1;
+                (_CurrentState == OP_ST) || (_CurrentState == OP_STX) || (_CurrentState > OP_HLT) ||
+                (_CurrentState == OP_LD)) ? (_RfWAux ? 1 : 0 ) : 1;
 
-assign o_EnB = (i_SelBit) & ((_CurrentState < OP_BXX) ? 1 : 0);
+//assign o_EnB = (~i_SelBit) & ((_CurrentState < OP_BXX) ? 1 : 0);
+assign o_EnB = 1;
 
 assign o_OpSel = i_SelBit;
 
@@ -145,6 +149,8 @@ always @(posedge i_Clk) begin
         _CurrentState <= STATE_INIT;
     end
     else begin
+        _PrevState = _CurrentState;
+
         case (_CurrentState)
             STATE_INIT: _CurrentState <= STATE_FETCH;
             STATE_FETCH: _CurrentState <= STATE_DECODE;

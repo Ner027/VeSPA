@@ -18,7 +18,7 @@ parameter OP_ADD = 3'b001,
           OP_CMP = 3'b111;
 
 assign o_Output = (i_Operation == OP_ADD) ? (i_OpL + i_OpR) :
-                  (i_Operation == OP_SUB) ? (i_OpR - i_OpL) :
+                  (i_Operation == OP_SUB) ? (i_OpL - i_OpR) :
                   (i_Operation == OP_ORL) ? (i_OpL | i_OpR) :
                   (i_Operation == OP_AND) ? (i_OpL & i_OpR) :
                   (i_Operation == OP_XOR) ? (i_OpL ^ i_OpR) :

@@ -11,7 +11,7 @@ module memory(
 );
 
 //Internal Variables
-reg [7:0] _Memory [63:0];
+reg [7:0] _Memory [127:0];
 
 always @(posedge i_Clk) begin
 
@@ -29,14 +29,13 @@ always @(posedge i_Clk) begin
             };
         end
         else begin
-            {_Memory[i_Addr + 3], _Memory[i_Addr + 2], _Memory[i_Addr + 1], _Memory[i_Addr + 0]} <=
+            {_Memory[i_Addr + 0], _Memory[i_Addr + 1], _Memory[i_Addr + 2], _Memory[i_Addr + 3]} <=
             {
                 i_DLen[0] ? i_Input[31:24]  : _Memory[i_Addr + 0],
                 i_DLen[1] ? i_Input[23:16]  : _Memory[i_Addr + 1],
                 i_DLen[2] ? i_Input[15:8]   : _Memory[i_Addr + 2],
                 i_DLen[3] ? i_Input[7:0]    : _Memory[i_Addr + 3]
             };
-
             o_Output <= o_Output;
         end
     end
