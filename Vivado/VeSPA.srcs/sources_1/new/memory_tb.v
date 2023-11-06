@@ -18,6 +18,7 @@ memory _dut(
     .o_Output(_Output)
 );
 
+
 always #1 _Clk = _Clk ^ 1;
 
 integer i;
