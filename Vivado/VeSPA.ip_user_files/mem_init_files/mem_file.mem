@@ -1,8 +1,8 @@
-/*Load immediate 0x00FFFF to Register 0*/
+/*Load immediate 0x00001 to Register 0*/
 01011000
 00000000
-11111111
-11111111
+00000000
+00000001
 
 /*Load immediate 0x000001 to Register 1*/
 01011000
@@ -10,34 +10,16 @@
 00000000
 00000001
 
-/*Store Register 0 to memory position 0x40*/
-01101000
-00000000
-00000000
-01000000
-
-/*Load from memory position 0x40 to Register 2*/
-01010000
-10000000
-00000000
-01000000
-
-/*Add R0 to R1 save result to R3*/
-00001000
-11000000
-00001000
-00000000
-
-/*Sub R1 from R3 save result to R4*/
-00010001
-00000110
-00001000
-00000000
-
-/*Or R1 with R2 save result to R5*/
-00011001
-01000010
+/*Subtract R0 to R1 and store in R2*/
 00010000
+10000010
+00000000
+00000000
+
+/*Subtract R0 to R1 and store in R2*/
+01000011
+00000000
+00000000
 00000000
 
 /*Halt*/
@@ -45,4 +27,3 @@
 00000000
 00000000
 00000000
-

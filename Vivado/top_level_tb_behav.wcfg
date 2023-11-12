@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="83.101 ns"></ZoomEndTime>
+      <ZoomStartTime time="299.380 ns"></ZoomStartTime>
+      <ZoomEndTime time="359.931 ns"></ZoomEndTime>
       <Cursor1Time time="20.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="187"></NameColumnWidth>
-      <ValueColumnWidth column_width="105"></ValueColumnWidth>
+      <ValueColumnWidth column_width="101"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="38" />
+   <WVObjectSize size="40" />
    <wvobject type="logic" fp_name="/top_level_tb/_dut/_ControlUnit/i_Rst">
       <obj_property name="ElementShortName">i_Rst</obj_property>
       <obj_property name="ObjectShortName">i_Rst</obj_property>
@@ -40,6 +40,14 @@
       <obj_property name="ElementShortName">_PrevState[5:0]</obj_property>
       <obj_property name="ObjectShortName">_PrevState[5:0]</obj_property>
    </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_PCounter">
+      <obj_property name="ElementShortName">_PCounter[22:0]</obj_property>
+      <obj_property name="ObjectShortName">_PCounter[22:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_IReg">
+      <obj_property name="ElementShortName">_IReg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">_IReg[31:0]</obj_property>
+   </wvobject>
    <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_RegFile/i_AddrW">
       <obj_property name="ElementShortName">i_AddrW[4:0]</obj_property>
       <obj_property name="ObjectShortName">i_AddrW[4:0]</obj_property>
@@ -59,7 +67,6 @@
    <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_RegFile/_RegisterFile">
       <obj_property name="ElementShortName">_RegisterFile[31:0][31:0]</obj_property>
       <obj_property name="ObjectShortName">_RegisterFile[31:0][31:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_IReg">
       <obj_property name="ElementShortName">_IReg[31:0]</obj_property>
