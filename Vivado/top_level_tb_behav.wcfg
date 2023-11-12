@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="299.380 ns"></ZoomStartTime>
-      <ZoomEndTime time="359.931 ns"></ZoomEndTime>
-      <Cursor1Time time="20.000 ns"></Cursor1Time>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="32.251 ns"></ZoomEndTime>
+      <Cursor1Time time="5.700 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="187"></NameColumnWidth>
-      <ValueColumnWidth column_width="101"></ValueColumnWidth>
+      <ValueColumnWidth column_width="97"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="40" />
+   <WVObjectSize size="42" />
    <wvobject type="logic" fp_name="/top_level_tb/_dut/_ControlUnit/i_Rst">
       <obj_property name="ElementShortName">i_Rst</obj_property>
       <obj_property name="ObjectShortName">i_Rst</obj_property>
@@ -39,6 +39,14 @@
    <wvobject type="array" fp_name="/top_level_tb/_dut/_ControlUnit/_PrevState">
       <obj_property name="ElementShortName">_PrevState[5:0]</obj_property>
       <obj_property name="ObjectShortName">_PrevState[5:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_OpL">
+      <obj_property name="ElementShortName">_OpL[31:0]</obj_property>
+      <obj_property name="ObjectShortName">_OpL[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_OpR">
+      <obj_property name="ElementShortName">_OpR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">_OpR[31:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_PCounter">
       <obj_property name="ElementShortName">_PCounter[22:0]</obj_property>
