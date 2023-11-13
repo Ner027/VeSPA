@@ -34,7 +34,7 @@ always @(posedge i_Clk) begin
     end
 end
 
-always @(i_AddrA or i_AddrB or i_Rst) begin
+always @(i_AddrA or i_AddrB or i_Rst or i_Clk) begin
     if (i_Rst) begin
         o_OutA <= 0;
         o_OutB <= 0;

@@ -2,16 +2,17 @@
 
 module regfile_tb();
 
-reg _Clk, _Rst, _RnW, _EnB;
-reg [4:0] _AddrA, _AddrB;
+reg _Clk, _Rst, _RfW, _EnB;
+reg [4:0] _AddrA, _AddrB, _AddrW;
 reg [31:0] _Input;
 wire [31:0] _OutA, _OutB;
 
 regfile _dut(
     .i_Clk(_Clk),
     .i_Rst(_Rst),
-    .i_RnW(_RnW),
+    .i_RfW(_RfW),
     .i_EnB(_EnB),
+    .i_AddrW(_AddrW),
     .i_AddrA(_AddrA),
     .i_AddrB(_AddrB),
     .i_Input(_Input),
@@ -25,7 +26,7 @@ integer i;
 initial begin
     _Clk = 0;
     _Rst = 0;
-    _RnW = 0;
+    _RfW = 0;
     _EnB = 0;
     _AddrA = 0;
     _AddrB = 0;
@@ -34,7 +35,7 @@ initial begin
     _Rst = 1;
     #2;
     _Rst = 0;
-    _RnW = 0;
+    _RfW = 0;
     #2;
 
     for (i = 0; i < 32; i = i + 1) begin
@@ -43,7 +44,7 @@ initial begin
         #2;
     end
 
-    _RnW = 1;
+    _RfW = 1;
     _EnB = 1;
     #2;
 

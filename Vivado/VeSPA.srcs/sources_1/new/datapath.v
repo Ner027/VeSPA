@@ -57,6 +57,23 @@ alu _Alu(
     .o_Output(_AluOut)
 );
 
+reg [7:0] _intCfg;
+reg [3:0] _intLines;
+wire _intPending;
+wire [7:0] _intFlags;
+wire [31:0] _jumpTo;
+
+pic _Pic
+(
+       .i_Clk(i_Clk),
+       .i_Rst(i_Rst),
+       .i_intLines(_intLines),
+       .i_intCfg(_intCfg),
+       .o_intPending(_intPending),
+       .o_intFlags(_intFlags),
+       .o_jumpTo(_jumpTo)
+);
+
 //Program Counter Support
 reg [31:0] _IReg;
 reg [22:0] _PCounter;
@@ -125,6 +142,7 @@ always @(posedge i_Clk) begin
             //JMP
             else if (i_PCSel == 2'b10) begin
                 _PCounter <= ({({16{_Imm16[15]}}), _Imm16} + _RfA);
+                $display(_PCounter);
             end
             //Invalid Condition
             else begin
