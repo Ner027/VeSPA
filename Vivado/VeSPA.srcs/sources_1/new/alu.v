@@ -83,7 +83,7 @@ assign o_Output = (i_Operation == OP_ADD) ? (addOp) :                   // para 
 
                   
                   
-assign CCodesUpdate =   i_Operation == OP_ADD || i_Operation == OP_SUB || i_Operation == OP_CMP;
+assign CCodesUpdate =   i_Operation == OP_ADD || i_Operation == OP_SUB;
 
 /*----------------------------------- condition codes --------------------------------------------------------
 ->[0] Zero 
@@ -91,8 +91,8 @@ assign CCodesUpdate =   i_Operation == OP_ADD || i_Operation == OP_SUB || i_Oper
 ->[2] Overflow
 ->[3] Carry out
 */ 
-assign o_CCodes[0] = (CCodesUpdate) ? (~(|o_Output[31:0])) : o_CCodes[0];
-assign o_CCodes[1] = (CCodesUpdate) ? (o_Output[31]) : o_CCodes[1];
+assign o_CCodes[0] = ~(|o_Output[31:0]);
+assign o_CCodes[1] = (o_Output[31]);
 assign o_CCodes[2] = (CCodesUpdate) ? ((~subSignal & ~addOp[31]) & (i_OpR[31] | i_OpL[31])) | ((subSignal & addOp[31]) & (~i_OpL[31] | i_OpR[31])) : o_CCodes[2];
 assign o_CCodes[3] = (CCodesUpdate) ? (carryAdder) : o_CCodes[3];
 
