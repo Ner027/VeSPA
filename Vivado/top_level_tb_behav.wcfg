@@ -12,14 +12,21 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="60.951 ns"></ZoomEndTime>
-      <Cursor1Time time="6.250 ns"></Cursor1Time>
+      <ZoomEndTime time="62.551 ns"></ZoomEndTime>
+      <Cursor1Time time="44.150 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="187"></NameColumnWidth>
-      <ValueColumnWidth column_width="93"></ValueColumnWidth>
+      <NameColumnWidth column_width="182"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="11" />
+   <WVObjectSize size="21" />
+   <wave_markers>
+      <marker label="" time="950" />
+      <marker label="" time="11000" />
+      <marker label="" time="19050" />
+      <marker label="" time="27000" />
+      <marker label="" time="34950" />
+   </wave_markers>
    <wvobject type="logic" fp_name="/top_level_tb/_dut/_ControlUnit/i_Rst">
       <obj_property name="ElementShortName">i_Rst</obj_property>
       <obj_property name="ObjectShortName">i_Rst</obj_property>
@@ -52,6 +59,10 @@
       <obj_property name="ElementShortName">_MemAddr[22:0]</obj_property>
       <obj_property name="ObjectShortName">_MemAddr[22:0]</obj_property>
    </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_MemOut">
+      <obj_property name="ElementShortName">_MemOut[31:0]</obj_property>
+      <obj_property name="ObjectShortName">_MemOut[31:0]</obj_property>
+   </wvobject>
    <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_OpL">
       <obj_property name="ElementShortName">_OpL[31:0]</obj_property>
       <obj_property name="ObjectShortName">_OpL[31:0]</obj_property>
@@ -60,8 +71,45 @@
       <obj_property name="ElementShortName">_OpR[31:0]</obj_property>
       <obj_property name="ObjectShortName">_OpR[31:0]</obj_property>
    </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Alu/o_Output">
+      <obj_property name="ElementShortName">o_Output[31:0]</obj_property>
+      <obj_property name="ObjectShortName">o_Output[31:0]</obj_property>
+   </wvobject>
    <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_RegFile/_RegisterFile">
       <obj_property name="ElementShortName">_RegisterFile[31:0][31:0]</obj_property>
       <obj_property name="ObjectShortName">_RegisterFile[31:0][31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Alu/o_CCodes">
+      <obj_property name="ElementShortName">o_CCodes[3:0]</obj_property>
+      <obj_property name="ObjectShortName">o_CCodes[3:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_level_tb/_dut/_Datapath/_Alu/updateVC">
+      <obj_property name="ElementShortName">updateVC</obj_property>
+      <obj_property name="ObjectShortName">updateVC</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_level_tb/_dut/_ControlUnit/_TakeJump">
+      <obj_property name="ElementShortName">_TakeJump</obj_property>
+      <obj_property name="ObjectShortName">_TakeJump</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_level_tb/_dut/_ControlUnit/_Z">
+      <obj_property name="ElementShortName">_Z</obj_property>
+      <obj_property name="ObjectShortName">_Z</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_level_tb/_dut/_ControlUnit/_N">
+      <obj_property name="ElementShortName">_N</obj_property>
+      <obj_property name="ObjectShortName">_N</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_level_tb/_dut/_ControlUnit/_O">
+      <obj_property name="ElementShortName">_O</obj_property>
+      <obj_property name="ObjectShortName">_O</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_level_tb/_dut/_ControlUnit/_C">
+      <obj_property name="ElementShortName">_C</obj_property>
+      <obj_property name="ObjectShortName">_C</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_ControlUnit/i_Cond">
+      <obj_property name="ElementShortName">i_Cond[3:0]</obj_property>
+      <obj_property name="ObjectShortName">i_Cond[3:0]</obj_property>
    </wvobject>
 </wave_config>

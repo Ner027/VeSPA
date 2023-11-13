@@ -93,7 +93,9 @@ assign _LinkJump = ((_CurrentState == OP_JMP) && (i_SelBit)) ? 1 : 0;
 
 assign o_Operation = _CurrentState[2:0];
 
-assign o_PCLoad = ((_CurrentState == OP_BXX) || (_CurrentState == OP_JMP) || (_CurrentState == STATE_FETCH)) ? 1 : 0;
+assign o_PCLoad = (((_CurrentState == OP_BXX) && _TakeJump) ||
+                    (_CurrentState == OP_JMP) ||
+                    (_CurrentState == STATE_FETCH)) ? 1 : 0;
 
 assign o_IRLoad = (_CurrentState == STATE_FETCH) ? 1 : 0;
 
@@ -110,7 +112,8 @@ assign o_OpSel = i_SelBit;
 
 assign o_PcSel = (_CurrentState == STATE_FETCH) ? 2'b00 :
                  (_CurrentState == STATE_INIT) ? 2'b00 :
-                 (_CurrentState == OP_BXX) ? 2'b01 : 2'b10;
+                 (_CurrentState == OP_BXX) ? (_TakeJump ? 2'b01 : 2'b00) :
+                 (_CurrentState == OP_JMP) ? 2'b10 : 0;
 
 assign o_RfSel = (_CurrentState < OP_CMP)   ? 0 :
                  (_CurrentState == OP_CMP)  ? 2'b01 :
@@ -125,8 +128,10 @@ assign o_MSel = (_CurrentState == OP_BXX) ? 2'b01 :
                 ((_CurrentState == STATE_FETCH) || (_CurrentState == STATE_INIT)) ? 2'b00 :  2'b10;
 
 //Decide wether or not the jump should be taken, refer to spec for more details
+
+
 assign _TakeJump = ((i_Cond == COND_BRA) ? 1 : 0)               |
-                   ((i_Cond == COND_BNV) ? 0 : 1)               |
+                   ((i_Cond == COND_BNV) ? 0 : 0)               |
                    (((i_Cond == COND_BCC) & (~_C)) ? 1 : 0)     |
                    (((i_Cond == COND_BCS) & (_C)) ? 1 : 0)      |
                    (((i_Cond == COND_BVC) & (~_O)) ? 1 : 0)     |
@@ -141,6 +146,7 @@ assign _TakeJump = ((i_Cond == COND_BRA) ? 1 : 0)               |
                    (((i_Cond == COND_BMI) & (_N)) ? 1 : 0);
 
 
+                    
 /***********************************************************************************************************************
  * Control Unit FSM
  **********************************************************************************************************************/

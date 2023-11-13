@@ -24,7 +24,16 @@ module datapath(
 wire [4:0] _AddrA, _AddrB, _AddrW;
 wire [22:0] _MemAddr;
 wire [31:0] _MemIn, _MemOut, _OpR, _OpL, _AluOut, _RegIn, _RfA, _RfB;
+wire _aluOperation;
 
+parameter OP_ADD = 3'b001,
+          OP_SUB = 3'b010, 
+          OP_ORL = 3'b011,
+          OP_AND = 3'b100,
+          OP_NOT = 3'b101,
+          OP_XOR = 3'b110,
+          OP_CMP = 3'b111;
+          
 regfile _RegFile(
     .i_Clk(i_Clk),
     .i_Rst(i_Rst),
@@ -50,6 +59,7 @@ memory _Mem(
 
 alu _Alu(
     .i_Rst(i_Rst),
+    .i_aluOperation(_aluOperation),
     .i_OpR(_OpR),
     .i_OpL(_OpL),
     .i_Operation(i_Operation),
@@ -108,6 +118,16 @@ assign _Imm17   = _IReg[16:0];
 assign _Imm22   = _IReg[21:0];
 assign _Imm23   = _IReg[22:0];
 
+//ALU operation
+assign _aluOperation = (o_OpCode == OP_ADD ||
+                        o_OpCode == OP_SUB ||
+                        o_OpCode == OP_ORL ||
+                        o_OpCode == OP_AND ||
+                        o_OpCode == OP_NOT ||
+                        o_OpCode == OP_XOR ||
+                        o_OpCode == OP_CMP)     ? 1'b1 : 1'b0;
+                        
+
 always @(posedge i_Clk) begin
     if (i_Rst) begin
         _PCounter <= 0;
@@ -136,6 +156,7 @@ always @(posedge i_Clk) begin
         end
     end
 end 
+
 
 always @(posedge i_Clk) begin
     if (i_Rst) begin
