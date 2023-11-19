@@ -36,14 +36,10 @@ wire [31:0]o_NOT;
 wire [31:0]o_XOR;
 
 // operações lógicas
-genvar i;
-for(i = 0;i<32;i = i+1)
-    begin 
-        or(o_ORL[i],i_OpL[i],i_OpR[i]);
-        and(o_AND[i],i_OpL[i],i_OpR[i]);
-        not(o_NOT[i],i_OpL[i]);
-        xor(o_XOR[i],i_OpL[i],i_OpR[i]);
-    end
+assign o_ORL[31:0] = i_OpL[31:0] | i_OpR[31:0];
+assign o_AND[31:0] = i_OpL[31:0] & i_OpR[31:0];
+assign o_NOT[31:0] = ~i_OpL[31:0];
+assign o_XOR[31:0] = i_OpL[31:0] ^ i_OpR[31:0];
 
 
 // sinal que indica se será feita uma opreação de subtração
@@ -69,7 +65,7 @@ RC32 _RC32CP2(
     );
     
     
-// escolhe qual o operando que é dado ao ADDER
+// escolhe qual o operando R que o Adder recebe
 assign OpR =  (i_Operation == OP_ADD) ? i_OpR:
               (i_Operation == OP_SUB || i_Operation == OP_CMP) ? OpR_CP2 : OpR;
 
@@ -92,7 +88,7 @@ assign updateVC = (i_Operation == OP_ADD || i_Operation == OP_SUB) ? 1'b1:1'b0;
 ->[1] Negativo 
 ->[2] Overflow
 ->[3] Carry out
-*/ 
+--------------------------------------------------------------------------------------------------------------*/ 
 assign o_CCodes[0] = (i_aluOperation) ? ~(|o_Output[31:0]) : o_CCodes[0];
 assign o_CCodes[1] = (i_aluOperation) ? (o_Output[31]) : o_CCodes[1];
 assign o_CCodes[2] = (updateVC & i_aluOperation) ? ((~subSignal & ~addOp[31]) & (i_OpR[31] | i_OpL[31])) | ((subSignal & addOp[31]) & (~i_OpL[31] | i_OpR[31])) : o_CCodes[2];

@@ -13,6 +13,7 @@ module control_unit(
     output o_RfW,
     output o_EnB,
     output o_OpSel,
+    output o_CCload,
     output [1:0] o_PcSel,
     output [1:0] o_RfSel,
     output [1:0] o_MSel,
@@ -82,9 +83,13 @@ assign _N = i_CCodes[1];
 assign _O = i_CCodes[2];
 assign _C = i_CCodes[3];
 
+//assign o_CCload = 1'b1;
+assign o_CCload = (_CurrentState == OP_ADD || _CurrentState == OP_SUB ||  _CurrentState == OP_CMP ) ? 1'b1 : 1'b0;
 /***********************************************************************************************************************
  * Output Assignment
  **********************************************************************************************************************/
+//assign o_aluOperation = () ? 1'b1 : 1'b0;
+ 
 assign o_DLen = 4'b1111;
 
 assign _RfWAux = ((_CurrentState == STATE_INIT) && (_PrevState == OP_LD)) ? 1 : 0;

@@ -9,6 +9,7 @@ module datapath(
     input i_RfW,
     input i_EnB,
     input i_OpSel,
+    input i_CCload,
     input [1:0] i_PCSel,
     input [1:0] i_RFSel,
     input [1:0] i_MSel,
@@ -25,6 +26,7 @@ wire [4:0] _AddrA, _AddrB, _AddrW;
 wire [22:0] _MemAddr;
 wire [31:0] _MemIn, _MemOut, _OpR, _OpL, _AluOut, _RegIn, _RfA, _RfB;
 wire _aluOperation;
+wire [3:0]_CCodes;
 
 parameter OP_ADD = 3'b001,
           OP_SUB = 3'b010, 
@@ -63,9 +65,12 @@ alu _Alu(
     .i_OpR(_OpR),
     .i_OpL(_OpL),
     .i_Operation(i_Operation),
-    .o_CCodes(o_CCodes),
+    .o_CCodes(_CCodes),
     .o_Output(_AluOut)
 );
+
+
+assign o_CCodes = (i_CCload == 1'b1) ? _CCodes : o_CCodes;
 
 //Program Counter Support
 reg [31:0] _IReg;
@@ -86,6 +91,8 @@ assign _RegIn = (i_RFSel == 2'b00) ? _AluOut :
                 (i_RFSel == 2'b01) ? _MemOut :
                 (i_RFSel == 2'b10) ? _PCounter :
                 (i_RFSel == 2'b11) ? _Imm22 : 0;
+
+
 
 //Left operand is allways aquired from the register file
 assign _OpL = _RfA;

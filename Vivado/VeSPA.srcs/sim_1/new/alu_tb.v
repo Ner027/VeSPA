@@ -14,6 +14,7 @@ integer i;
 
 alu _dut(
     .i_Rst(_Rst),
+    .i_aluOperation(1'b1),
     .i_Operation(_Operation),
     .i_OpL(_OpL),
     .i_OpR(_OpR),
