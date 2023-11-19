@@ -14,10 +14,12 @@ module datapath(
     input [1:0] i_MSel,
     input [2:0] i_Operation,
     input [3:0] i_DLen,
+    input [31:0] i_IntJmpTo,
     output o_SelBit,
     output [3:0] o_Cond,
     output [3:0] o_CCodes,
-    output [4:0] o_OpCode
+    output [4:0] o_OpCode,
+    output [7:0] o_IntCfg
 );
 
 //Internal Variables
@@ -55,23 +57,6 @@ alu _Alu(
     .i_Operation(i_Operation),
     .o_CCodes(o_CCodes),
     .o_Output(_AluOut)
-);
-
-reg [7:0] _intCfg;
-reg [3:0] _intLines;
-wire _intPending;
-wire [7:0] _intFlags;
-wire [31:0] _jumpTo;
-
-pic _Pic
-(
-       .i_Clk(i_Clk),
-       .i_Rst(i_Rst),
-       .i_intLines(_intLines),
-       .i_intCfg(_intCfg),
-       .o_intPending(_intPending),
-       .o_intFlags(_intFlags),
-       .o_jumpTo(_jumpTo)
 );
 
 //Program Counter Support
@@ -143,6 +128,9 @@ always @(posedge i_Clk) begin
             else if (i_PCSel == 2'b10) begin
                 _PCounter <= ({({16{_Imm16[15]}}), _Imm16} + _RfA);
                 $display(_PCounter);
+            end
+            else if (i_PCSel == 2'b11) begin
+                _PCounter <= i_IntJmpTo;
             end
             //Invalid Condition
             else begin

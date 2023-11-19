@@ -2,17 +2,22 @@
 
 module top_level(
     input i_Rst,
-    input i_Clk
+    input i_Clk,
+    input [3:0] i_IntLines,
+    output [3:0] o_Output
  );
 
 /***********************************************************************************************************************
 * Internal Variables
 **********************************************************************************************************************/
-wire _PCLoad, _IRLoad, _RnW, _RfW, _EnB, _OpSel, _SelBit;
+wire _PCLoad, _IRLoad, _RnW, _RfW, _EnB, _OpSel, _SelBit, _IntPendning;
 wire [1:0] _PCSel, _RFSel, _MSel;
 wire [2:0] _Operation;
 wire [3:0] _DLen, _Cond, _CCodes;
 wire [4:0] _OpCode;
+wire [31:0] _IntJumpTo;
+
+assign o_Output = _OpCode;
 
  datapath _Datapath(
      .i_Rst(i_Rst),
@@ -28,6 +33,7 @@ wire [4:0] _OpCode;
      .i_MSel(_MSel),
      .i_Operation(_Operation),
      .i_DLen(_DLen),
+     .i_IntJmpTo(_IntJumpTo),
      .o_SelBit(_SelBit),
      .o_Cond(_Cond),
      .o_CCodes(_CCodes),
@@ -41,6 +47,7 @@ wire [4:0] _OpCode;
     .i_Cond(_Cond),
     .i_CCodes(_CCodes),
     .i_OpCode(_OpCode),
+    .i_IntPending(_IntPendning),
     .o_PCLoad(_PCLoad),
     .o_IRLoad(_IRLoad),
     .o_RnW(_RnW),
@@ -52,6 +59,14 @@ wire [4:0] _OpCode;
     .o_MSel(_MSel),
     .o_Operation(_Operation),
     .o_DLen(_DLen)
+ );
+
+ pic _Pic(
+    .i_Rst(i_Rst),
+    .i_Clk(i_Clk),
+    .i_intLines(i_IntLines),
+    .o_intPending(_IntPendning),
+    .o_jumpTo(_IntJumpTo)
  );
 
 endmodule

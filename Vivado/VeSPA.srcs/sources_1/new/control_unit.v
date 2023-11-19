@@ -4,6 +4,7 @@ module control_unit(
     input i_Rst,
     input i_Clk,
     input i_SelBit,
+    input i_IntPending,
     input [3:0] i_Cond,
     input [3:0] i_CCodes,
     input [4:0] i_OpCode,
@@ -110,10 +111,10 @@ assign o_EnB = 1;
 
 assign o_OpSel = i_SelBit;
 
-assign o_PcSel = (_CurrentState == STATE_FETCH) ? 2'b00 :
-                 (_CurrentState == STATE_INIT) ? 2'b00 :
-                 (_CurrentState == OP_BXX) ? (_TakeJump ? 2'b01 : 2'b00) :
-                 (_CurrentState == OP_JMP) ? 2'b10 : 0;
+assign o_PcSel = (_CurrentState == STATE_FETCH) ? (i_IntPending ? 2'b11 : 2'b00) :
+                 (_CurrentState == STATE_INIT)  ? (i_IntPending ? 2'b11 : 2'b00)  :
+                 (_CurrentState == OP_BXX)      ? (_TakeJump ? 2'b01 : 2'b00) :
+                 (_CurrentState == OP_JMP)      ? 2'b10 : 0;
 
 assign o_RfSel = (_CurrentState < OP_CMP)   ? 0 :
                  (_CurrentState == OP_CMP)  ? 2'b01 :
@@ -128,19 +129,19 @@ assign o_MSel = (_CurrentState == OP_BXX) ? 2'b01 :
                 ((_CurrentState == STATE_FETCH) || (_CurrentState == STATE_INIT)) ? 2'b00 :  2'b10;
 
 //Decide wether or not the jump should be taken, refer to spec for more details
-assign _TakeJump = ((i_Cond == COND_BRA) ? 1 : 0)               |
-                   ((i_Cond == COND_BNV) ? 0 : 1)               |
-                   (((i_Cond == COND_BCC) & (~_C)) ? 1 : 0)     |
-                   (((i_Cond == COND_BCS) & (_C)) ? 1 : 0)      |
-                   (((i_Cond == COND_BVC) & (~_O)) ? 1 : 0)     |
-                   (((i_Cond == COND_BVS) & (_O)) ? 1 : 0)      |
-                   (((i_Cond == COND_BEQ) & (_Z)) ? 1 : 0)      |
-                   (((i_Cond == COND_BNE) & (~_Z)) ? 1 : 0)     |
-                   (((i_Cond == COND_BGE) & ((~_N & ~_O) | (_N & _O))) ? 1 : 0)        |
-                   (((i_Cond == COND_BLT) & ((_N & ~_O) | (~_N & _O))) ? 1 : 0)        |
-                   (((i_Cond == COND_BGT) & (~_Z & ((~_N & ~_O)|(_N & _O)))) ? 1 : 0)  |
-                   (((i_Cond == COND_BLE) & (_Z | ((_N & ~_O)|(~_N & _O)))) ? 1 : 0)   |
-                   (((i_Cond == COND_BPL) & (~_N)) ? 1 : 0)     |
+assign _TakeJump = ((i_Cond == COND_BRA) ? 1 : 0)                                       |
+                   ((i_Cond == COND_BNV) ? 0 : 1)                                       |
+                   (((i_Cond == COND_BCC) & (~_C)) ? 1 : 0)                             |
+                   (((i_Cond == COND_BCS) & (_C)) ? 1 : 0)                              |
+                   (((i_Cond == COND_BVC) & (~_O)) ? 1 : 0)                             |
+                   (((i_Cond == COND_BVS) & (_O)) ? 1 : 0)                              |
+                   (((i_Cond == COND_BEQ) & (_Z)) ? 1 : 0)                              |
+                   (((i_Cond == COND_BNE) & (~_Z)) ? 1 : 0)                             |
+                   (((i_Cond == COND_BGE) & ((~_N & ~_O) | (_N & _O))) ? 1 : 0)         |
+                   (((i_Cond == COND_BLT) & ((_N & ~_O) | (~_N & _O))) ? 1 : 0)         |
+                   (((i_Cond == COND_BGT) & (~_Z & ((~_N & ~_O)|(_N & _O)))) ? 1 : 0)   |
+                   (((i_Cond == COND_BLE) & (_Z | ((_N & ~_O)|(~_N & _O)))) ? 1 : 0)    |
+                   (((i_Cond == COND_BPL) & (~_N)) ? 1 : 0)                             |
                    (((i_Cond == COND_BMI) & (_N)) ? 1 : 0);
 
 
