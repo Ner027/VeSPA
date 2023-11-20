@@ -7,8 +7,7 @@ reg [3:0] _IntLines;
 
 top_level _dut(
     .i_Clk(_Clk),
-    .i_Rst(_Rst),
-    .i_IntLines(_IntLines)
+    .i_Rst(_Rst)
 );
 
 always #1 _Clk = _Clk ^ 1;

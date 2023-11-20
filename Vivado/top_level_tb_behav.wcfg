@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="35.958 ns"></ZoomStartTime>
-      <ZoomEndTime time="58.809 ns"></ZoomEndTime>
-      <Cursor1Time time="54.000 ns"></Cursor1Time>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="78.901 ns"></ZoomEndTime>
+      <Cursor1Time time="0.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="207"></NameColumnWidth>
-      <ValueColumnWidth column_width="80"></ValueColumnWidth>
+      <NameColumnWidth column_width="201"></NameColumnWidth>
+      <ValueColumnWidth column_width="76"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="16" />
    <wvobject type="logic" fp_name="/top_level_tb/_dut/_ControlUnit/i_Rst">
@@ -76,12 +76,12 @@
       <obj_property name="ElementShortName">_Memory[127:0][7:0]</obj_property>
       <obj_property name="ObjectShortName">_Memory[127:0][7:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/top_level_tb/_IntLines">
-      <obj_property name="ElementShortName">_IntLines[3:0]</obj_property>
-      <obj_property name="ObjectShortName">_IntLines[3:0]</obj_property>
-   </wvobject>
    <wvobject type="array" fp_name="/top_level_tb/_dut/_ControlUnit/o_PcSel">
       <obj_property name="ElementShortName">o_PcSel[1:0]</obj_property>
       <obj_property name="ObjectShortName">o_PcSel[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_ControlUnit/i_CCodes">
+      <obj_property name="ElementShortName">i_CCodes[3:0]</obj_property>
+      <obj_property name="ObjectShortName">i_CCodes[3:0]</obj_property>
    </wvobject>
 </wave_config>

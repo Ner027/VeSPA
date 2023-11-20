@@ -14,6 +14,7 @@ module control_unit(
     output o_RfW,
     output o_EnB,
     output o_OpSel,
+    output o_CCload,
     output [1:0] o_PcSel,
     output [1:0] o_RfSel,
     output [1:0] o_MSel,
@@ -111,8 +112,8 @@ assign o_EnB = 1;
 
 assign o_OpSel = i_SelBit;
 
-assign o_PcSel = (_CurrentState == STATE_FETCH) ? (i_IntPending ? 2'b11 : 2'b00) :
-                 (_CurrentState == STATE_INIT)  ? (i_IntPending ? 2'b11 : 2'b00)  :
+assign o_PcSel = (_CurrentState == STATE_FETCH) ?  2'b00  :
+                 (_CurrentState == STATE_INIT)  ?  2'b00  :
                  (_CurrentState == OP_BXX)      ? (_TakeJump ? 2'b01 : 2'b00) :
                  (_CurrentState == OP_JMP)      ? 2'b10 : 0;
 
@@ -144,6 +145,8 @@ assign _TakeJump = ((i_Cond == COND_BRA) ? 1 : 0)                               
                    (((i_Cond == COND_BPL) & (~_N)) ? 1 : 0)                             |
                    (((i_Cond == COND_BMI) & (_N)) ? 1 : 0);
 
+//Only update the Condition Codes on the operations that require them
+assign o_CCload = (_CurrentState == OP_ADD || _CurrentState == OP_SUB ||  _CurrentState == OP_CMP ) ? 1'b1 : 1'b0;
 
 /***********************************************************************************************************************
  * Control Unit FSM
