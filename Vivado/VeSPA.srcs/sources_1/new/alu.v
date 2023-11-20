@@ -26,8 +26,7 @@ wire[31:0] OpR_CP2;
 wire carryCP2;
 wire carryAdder;
 wire subSignal;
-wire CCodesUpdate;
-wire updateVC;
+
 
 // saídas das operações lógicas
 wire [31:0]o_ORL;
@@ -80,19 +79,15 @@ assign o_Output = (i_Operation == OP_ADD) ? (addOp) :                   // para 
                   (i_Operation == OP_CMP) ? (addOp) :  o_Output;                 
 
                   
-                        
-assign updateVC = (i_Operation == OP_ADD || i_Operation == OP_SUB) ? 1'b1:1'b0;
-
 /*----------------------------------- condition codes --------------------------------------------------------
 ->[0] Zero 
 ->[1] Negativo 
 ->[2] Overflow
 ->[3] Carry out
 --------------------------------------------------------------------------------------------------------------*/ 
-assign o_CCodes[0] = (i_aluOperation) ? ~(|o_Output[31:0]) : o_CCodes[0];
-assign o_CCodes[1] = (i_aluOperation) ? (o_Output[31]) : o_CCodes[1];
-assign o_CCodes[2] = (updateVC & i_aluOperation) ? ((~subSignal & ~addOp[31]) & (i_OpR[31] | i_OpL[31])) | ((subSignal & addOp[31]) & (~i_OpL[31] | i_OpR[31])) : o_CCodes[2];
-assign o_CCodes[3] = (updateVC & i_aluOperation) ? (carryAdder) : o_CCodes[3];
-
-
+assign o_CCodes[0] = ~(|o_Output[31:0]);
+assign o_CCodes[1] = (o_Output[31]);
+assign o_CCodes[2] = ((~subSignal & ~addOp[31]) & (i_OpR[31] | i_OpL[31])) | 
+                     ((subSignal & addOp[31]) & (~i_OpL[31] | i_OpR[31]));
+assign o_CCodes[3] = (carryAdder);
 endmodule

@@ -12,14 +12,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="148.246 ns"></ZoomEndTime>
+      <ZoomEndTime time="121.501 ns"></ZoomEndTime>
       <Cursor1Time time="31.583 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="180"></NameColumnWidth>
-      <ValueColumnWidth column_width="108"></ValueColumnWidth>
+      <ValueColumnWidth column_width="104"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="24" />
+   <WVObjectSize size="23" />
    <wvobject type="logic" fp_name="/top_level_tb/_dut/_ControlUnit/i_Rst">
       <obj_property name="ElementShortName">i_Rst</obj_property>
       <obj_property name="ObjectShortName">i_Rst</obj_property>
@@ -79,10 +79,6 @@
    <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Alu/i_Operation">
       <obj_property name="ElementShortName">i_Operation[2:0]</obj_property>
       <obj_property name="ObjectShortName">i_Operation[2:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/top_level_tb/_dut/_Datapath/_Alu/updateVC">
-      <obj_property name="ElementShortName">updateVC</obj_property>
-      <obj_property name="ObjectShortName">updateVC</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/top_level_tb/_dut/_Datapath/_aluOperation">
       <obj_property name="ElementShortName">_aluOperation</obj_property>
