@@ -13,6 +13,7 @@ wire [1:0] _PCSel, _RFSel, _MSel;
 wire [2:0] _Operation;
 wire [3:0] _DLen, _Cond, _CCodes;
 wire [4:0] _OpCode;
+wire _CCload;
 
  datapath _Datapath(
      .i_Rst(i_Rst),
@@ -23,6 +24,7 @@ wire [4:0] _OpCode;
      .i_RfW(_RfW),
      .i_EnB(_EnB),
      .i_OpSel(_OpSel),
+     .i_CCload(_CCload),
      .i_PCSel(_PCSel),
      .i_RFSel(_RFSel),
      .i_MSel(_MSel),
@@ -47,6 +49,7 @@ wire [4:0] _OpCode;
     .o_RfW(_RfW),
     .o_EnB(_EnB),
     .o_OpSel(_OpSel),
+    .o_CCload(_CCload),
     .o_PcSel(_PCSel),
     .o_RfSel(_RFSel),
     .o_MSel(_MSel),
