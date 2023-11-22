@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="alu_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="alu_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="13.247 ns"></ZoomEndTime>
+      <Cursor1Time time="4.011 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="180"></NameColumnWidth>
+      <ValueColumnWidth column_width="96"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="9" />
+   <wvobject type="logic" fp_name="/alu_tb/_Rst">
+      <obj_property name="ElementShortName">_Rst</obj_property>
+      <obj_property name="ObjectShortName">_Rst</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/alu_tb/_Operation">
+      <obj_property name="ElementShortName">_Operation[2:0]</obj_property>
+      <obj_property name="ObjectShortName">_Operation[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/alu_tb/_OpR">
+      <obj_property name="ElementShortName">_OpR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">_OpR[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/alu_tb/_OpL">
+      <obj_property name="ElementShortName">_OpL[31:0]</obj_property>
+      <obj_property name="ObjectShortName">_OpL[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/alu_tb/_Output">
+      <obj_property name="ElementShortName">_Output[31:0]</obj_property>
+      <obj_property name="ObjectShortName">_Output[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/alu_tb/C">
+      <obj_property name="ElementShortName">C</obj_property>
+      <obj_property name="ObjectShortName">C</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/alu_tb/N">
+      <obj_property name="ElementShortName">N</obj_property>
+      <obj_property name="ObjectShortName">N</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/alu_tb/V">
+      <obj_property name="ElementShortName">V</obj_property>
+      <obj_property name="ObjectShortName">V</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/alu_tb/Z">
+      <obj_property name="ElementShortName">Z</obj_property>
+      <obj_property name="ObjectShortName">Z</obj_property>
+   </wvobject>
+</wave_config>
