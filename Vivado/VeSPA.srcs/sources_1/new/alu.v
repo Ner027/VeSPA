@@ -2,7 +2,6 @@
 
 module alu(
     input i_Rst,
-    input i_aluOperation,
     input [2:0] i_Operation,
     input [31:0] i_OpL,
     input [31:0] i_OpR,

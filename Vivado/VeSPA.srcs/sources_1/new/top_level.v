@@ -2,7 +2,8 @@
 
 module top_level(
     input i_Rst,
-    input i_Clk
+    input i_Clk,
+    output led
  );
 
 /***********************************************************************************************************************
@@ -57,4 +58,6 @@ wire _CCload;
     .o_DLen(_DLen)
  );
 
+
+assign led = _CCload;
 endmodule

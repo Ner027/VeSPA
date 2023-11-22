@@ -25,7 +25,6 @@ module datapath(
 wire [4:0] _AddrA, _AddrB, _AddrW;
 wire [22:0] _MemAddr;
 wire [31:0] _MemIn, _MemOut, _OpR, _OpL, _AluOut, _RegIn, _RfA, _RfB;
-wire _aluOperation;
 wire [3:0]_CCodes;
 
 parameter OP_ADD = 3'b001,
@@ -61,7 +60,6 @@ memory _Mem(
 
 alu _Alu(
     .i_Rst(i_Rst),
-    .i_aluOperation(_aluOperation),
     .i_OpR(_OpR),
     .i_OpL(_OpL),
     .i_Operation(i_Operation),
@@ -69,7 +67,7 @@ alu _Alu(
     .o_Output(_AluOut)
 );
 
-
+//Condition Codes update
 assign o_CCodes = (i_CCload == 1'b1) ? _CCodes : o_CCodes;
 
 //Program Counter Support
@@ -125,16 +123,7 @@ assign _Imm17   = _IReg[16:0];
 assign _Imm22   = _IReg[21:0];
 assign _Imm23   = _IReg[22:0];
 
-//ALU operation
-assign _aluOperation = (o_OpCode == OP_ADD ||
-                        o_OpCode == OP_SUB ||
-                        o_OpCode == OP_ORL ||
-                        o_OpCode == OP_AND ||
-                        o_OpCode == OP_NOT ||
-                        o_OpCode == OP_XOR ||
-                        o_OpCode == OP_CMP)     ? 1'b1 : 1'b0;
-                        
-
+                   
 always @(posedge i_Clk) begin
     if (i_Rst) begin
         _PCounter <= 0;

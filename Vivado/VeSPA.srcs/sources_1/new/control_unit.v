@@ -83,12 +83,12 @@ assign _N = i_CCodes[1];
 assign _O = i_CCodes[2];
 assign _C = i_CCodes[3];
 
-//assign o_CCload = 1'b1;
+
 assign o_CCload = (_CurrentState == OP_ADD || _CurrentState == OP_SUB ||  _CurrentState == OP_CMP ) ? 1'b1 : 1'b0;
 /***********************************************************************************************************************
  * Output Assignment
  **********************************************************************************************************************/
-//assign o_aluOperation = () ? 1'b1 : 1'b0;
+
  
 assign o_DLen = 4'b1111;
 
