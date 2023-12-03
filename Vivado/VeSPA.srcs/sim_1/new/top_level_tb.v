@@ -17,8 +17,6 @@ initial begin
     _Clk = 0;
     #4;
     _Rst = 0;
-    #50;
-    _IntLines <= 4'b0001;
     #300;
     $finish;
 end

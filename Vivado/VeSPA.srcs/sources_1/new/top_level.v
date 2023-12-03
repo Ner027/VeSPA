@@ -9,7 +9,7 @@ module top_level(
 /***********************************************************************************************************************
 * Internal Variables
 **********************************************************************************************************************/
-wire _PCLoad, _IRLoad, _RnW, _RfW, _EnB, _OpSel, _SelBit, _IntPendning, _CCLoad;
+wire _PCLoad, _IRLoad, _RnW, _RfW, _EnB, _OpSel, _SelBit, _IntPendning, _CCLoad, _MemRdy;
 wire [1:0] _PCSel, _RFSel, _MSel;
 wire [2:0] _Operation;
 wire [3:0] _DLen, _Cond, _CCodes;
@@ -34,6 +34,7 @@ assign o_Output = _OpCode;
      .i_Operation(_Operation),
      .i_DLen(_DLen),
      .i_IntJmpTo(_IntJumpTo),
+     .o_MemRdy(_MemRdy),
      .o_SelBit(_SelBit),
      .o_Cond(_Cond),
      .o_CCodes(_CCodes),
@@ -47,7 +48,7 @@ assign o_Output = _OpCode;
     .i_Cond(_Cond),
     .i_CCodes(_CCodes),
     .i_OpCode(_OpCode),
-    .i_IntPending(_IntPendning),
+    .i_MemRdy(_MemRdy),
     .o_PCLoad(_PCLoad),
     .o_IRLoad(_IRLoad),
     .o_RnW(_RnW),

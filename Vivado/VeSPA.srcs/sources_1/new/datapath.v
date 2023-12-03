@@ -1,5 +1,15 @@
 `timescale 1ns / 1ps
 
+/// \brief This module contains the CPU datapath
+/// \input i_Rst Reset Signal
+/// \input i_Clk Clock Signal
+/// \input i_PCLoad Choose whether or not Program Counter should load a new value
+/// \input i_IRLoad Choose whether or not Instruction Register should load a new value
+/// \input i_RnW Memory Read/!Write Signal
+/// \input i_RfW Enable/Disable writing to the Register File
+/// \input i_EnB Enable/Disable the Register File B Port
+/// \input i_OpSel Choose whether the ALU Left Operand comes from the Register File B Port or a 16-bit immediate
+/// \input i_CCLoad Choose if the Condition Codes should be updated or not
 module datapath(
     input i_Rst,
     input i_Clk,
@@ -16,6 +26,7 @@ module datapath(
     input [2:0] i_Operation,
     input [3:0] i_DLen,
     input [31:0] i_IntJmpTo,
+    output o_MemRdy,
     output o_SelBit,
     output [3:0] o_Cond,
     output [3:0] o_CCodes,
@@ -42,6 +53,17 @@ regfile _RegFile(
     .o_OutB(_RfB)
 );
 
+memory_wrapper _Mem(
+    .i_Clk(i_Clk),
+    .i_Rst(i_Rst),
+    .i_Addr(_MemAddr),
+    .i_EnW(~i_RnW),
+    .i_DIn(_MemIn),
+    .o_MemReady(o_MemRdy),
+    .o_DOut(_MemOut)
+);
+
+/*
 memory _Mem(
     .i_Clk(i_Clk),
     .i_Rst(i_Rst),
@@ -50,7 +72,7 @@ memory _Mem(
     .i_DLen(i_DLen),
     .i_Read(i_RnW),
     .o_Output(_MemOut)
-);
+);*/
 
 alu _Alu(
     .i_Rst(i_Rst),
