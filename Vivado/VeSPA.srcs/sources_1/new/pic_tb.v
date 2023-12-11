@@ -14,9 +14,7 @@ pic _dut
        .i_Clk(_Clk),
        .i_Rst(_Rst),
        .i_intLines(_intLines),
-       .i_intCfg(_intCfg),
        .o_intPending(_intPending),
-       .o_intFlags(_intFlags),
        .o_jumpTo(_jumpTo)
 );
 

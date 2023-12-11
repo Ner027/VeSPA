@@ -35,19 +35,19 @@ initial begin
     _Rst = 1;
     #2;
     _Rst = 0;
-    _RfW = 0;
-    #2;
+    _RfW = 1;
+    #5;
 
     for (i = 0; i < 32; i = i + 1) begin
-        _AddrA = i;
+        _AddrW = i;
         _Input = i;
         #2;
     end
 
-    _RfW = 1;
+    _RfW = 0;
     _EnB = 1;
     #2;
-
+    
     for (i = 0; i < 16; i = i + 1) begin
         _AddrA = i;
         _AddrB = 32 - i;
