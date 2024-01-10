@@ -3,6 +3,7 @@
 module top_level(
     input i_Rst,
     input i_Clk,
+    input [3:0] i_IntLines,
     output [3:0] o_Output
  );
 
@@ -12,9 +13,10 @@ module top_level(
 wire _PCLoad, _IRLoad, _RnW, _RfW, _EnB, _OpSel, _SelBit, _IntPendning, _CCLoad, _MemRdy;
 wire [1:0] _PCSel, _RFSel, _MSel;
 wire [2:0] _Operation;
-wire [3:0] _DLen, _Cond, _CCodes;
+wire [3:0] _DLen, _Cond, _CCodes, _PAddr;
 wire [4:0] _OpCode;
-wire [31:0] _IntJumpTo;
+wire [7:0] _PControl;
+wire [31:0] _IntJumpTo, _PDataIn, _PDataOut;
 
 assign o_Output = _OpCode;
 
@@ -33,9 +35,12 @@ assign o_Output = _OpCode;
      .i_MSel(_MSel),
      .i_Operation(_Operation),
      .i_DLen(_DLen),
-     .i_IntJmpTo(_IntJumpTo),
+     .i_PDataIn(_PDataOut),
      .o_MemRdy(_MemRdy),
      .o_SelBit(_SelBit),
+     .o_PDataOut(_PDataIn),
+     .o_PAddr(_PAddr),
+     .o_PControl(_PControl),
      .o_Cond(_Cond),
      .o_CCodes(_CCodes),
      .o_OpCode(_OpCode)
@@ -62,4 +67,18 @@ assign o_Output = _OpCode;
     .o_Operation(_Operation),
     .o_DLen(_DLen)
  );
+
+
+pic _Pic
+(
+       .i_Clk(i_Clk),
+       .i_Rst(i_Rst),
+       .i_intLines(i_IntLines),
+       .i_PControl(_PControl),
+       .i_PAddr(_PAddr),
+       .i_PDataIn(_PDataIn),
+       .o_PDataOut(_PDataOut),
+       .o_jumpTo(_IntJumpTo)
+);
+
 endmodule

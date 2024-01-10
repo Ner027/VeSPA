@@ -48,6 +48,10 @@ initial begin
         _Input = i;
         #4;
     end
+
+   #4;
+   _Addr <= 8192;
+   _Input <= 32'hFAFEDEAD;
     
     $finish;
 

@@ -25,19 +25,21 @@ module datapath(
     input [1:0] i_MSel,
     input [2:0] i_Operation,
     input [3:0] i_DLen,
-    input [31:0] i_IntJmpTo,
+    input [31:0] i_PDataIn,
     output o_MemRdy,
     output o_SelBit,
     output [3:0] o_Cond,
     output [3:0] o_CCodes,
+    output [3:0] o_PAddr,
     output [4:0] o_OpCode,
-    output [7:0] o_IntCfg
+    output [7:0] o_PControl,
+    output [31:0] o_PDataOut
 );
 
 //Internal Variables
 wire [3:0]_CCodes;
 wire [4:0] _AddrA, _AddrB, _AddrW;
-wire [22:0] _MemAddr;
+wire [31:0] _MemAddr;
 wire [31:0] _MemIn, _MemOut, _OpR, _OpL, _AluOut, _RegIn, _RfA, _RfB;
 
 regfile _RegFile(
@@ -58,21 +60,14 @@ memory_wrapper _Mem(
     .i_Rst(i_Rst),
     .i_Addr(_MemAddr),
     .i_EnW(~i_RnW),
+    .i_PDataIn(i_PDataIn),
     .i_DIn(_MemIn),
     .o_MemReady(o_MemRdy),
-    .o_DOut(_MemOut)
+    .o_DOut(_MemOut),
+    .o_PDataOut(o_PDataOut),
+    .o_PControl(o_PControl),
+    .o_PDevAddr(o_PAddr)
 );
-
-/*
-memory _Mem(
-    .i_Clk(i_Clk),
-    .i_Rst(i_Rst),
-    .i_Addr(_MemAddr),
-    .i_Input(_MemIn),
-    .i_DLen(i_DLen),
-    .i_Read(i_RnW),
-    .o_Output(_MemOut)
-);*/
 
 alu _Alu(
     .i_Rst(i_Rst),
@@ -155,8 +150,9 @@ always @(posedge i_Clk) begin
                 _PCounter <= ({({16{_Imm16[15]}}), _Imm16} + _RfA);
                 $display(_PCounter);
             end
+            //Interrupt
             else if (i_PCSel == 2'b11) begin
-                _PCounter <= i_IntJmpTo;
+                _PCounter <= _PCounter;
             end
             //Invalid Condition
             else begin

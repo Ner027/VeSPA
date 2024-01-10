@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="23.850 ns"></ZoomStartTime>
-      <ZoomEndTime time="60.751 ns"></ZoomEndTime>
-      <Cursor1Time time="30.000 ns"></Cursor1Time>
+      <ZoomStartTime time="0.119 ns"></ZoomStartTime>
+      <ZoomEndTime time="7.720 ns"></ZoomEndTime>
+      <Cursor1Time time="29.589 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="166"></NameColumnWidth>
+      <NameColumnWidth column_width="156"></NameColumnWidth>
       <ValueColumnWidth column_width="76"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="21" />
+   <WVObjectSize size="24" />
    <wvobject type="logic" fp_name="/top_level_tb/_dut/_ControlUnit/i_Rst">
       <obj_property name="ElementShortName">i_Rst</obj_property>
       <obj_property name="ObjectShortName">i_Rst</obj_property>
@@ -44,21 +44,13 @@
       <obj_property name="ElementShortName">_PrevState[5:0]</obj_property>
       <obj_property name="ObjectShortName">_PrevState[5:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_RegFile/o_OutA">
-      <obj_property name="ElementShortName">o_OutA[31:0]</obj_property>
-      <obj_property name="ObjectShortName">o_OutA[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_RegFile/o_OutB">
-      <obj_property name="ElementShortName">o_OutB[31:0]</obj_property>
-      <obj_property name="ObjectShortName">o_OutB[31:0]</obj_property>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Mem/o_DOut">
+      <obj_property name="ElementShortName">o_DOut[31:0]</obj_property>
+      <obj_property name="ObjectShortName">o_DOut[31:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_RegFile/_RegisterFile">
       <obj_property name="ElementShortName">_RegisterFile[31:0][31:0]</obj_property>
       <obj_property name="ObjectShortName">_RegisterFile[31:0][31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Alu/o_Output">
-      <obj_property name="ElementShortName">o_Output[31:0]</obj_property>
-      <obj_property name="ObjectShortName">o_Output[31:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/top_level_tb/_dut/_ControlUnit/o_PcSel">
       <obj_property name="ElementShortName">o_PcSel[1:0]</obj_property>
@@ -84,18 +76,6 @@
       <obj_property name="ElementShortName">_PCounter[22:0]</obj_property>
       <obj_property name="ObjectShortName">_PCounter[22:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/top_level_tb/_dut/_Datapath/_Mem/i_Clk">
-      <obj_property name="ElementShortName">i_Clk</obj_property>
-      <obj_property name="ObjectShortName">i_Clk</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/top_level_tb/_dut/_Datapath/_Mem/i_Rst">
-      <obj_property name="ElementShortName">i_Rst</obj_property>
-      <obj_property name="ObjectShortName">i_Rst</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/top_level_tb/_dut/_Datapath/_Mem/i_EnW">
-      <obj_property name="ElementShortName">i_EnW</obj_property>
-      <obj_property name="ObjectShortName">i_EnW</obj_property>
-   </wvobject>
    <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Mem/i_Addr">
       <obj_property name="ElementShortName">i_Addr[14:0]</obj_property>
       <obj_property name="ObjectShortName">i_Addr[14:0]</obj_property>
@@ -103,5 +83,38 @@
    <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Mem/o_DOut">
       <obj_property name="ElementShortName">o_DOut[31:0]</obj_property>
       <obj_property name="ObjectShortName">o_DOut[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_RegFile/_RegisterFile">
+      <obj_property name="ElementShortName">_RegisterFile[31:0][31:0]</obj_property>
+      <obj_property name="ObjectShortName">_RegisterFile[31:0][31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Mem/i_Addr">
+      <obj_property name="ElementShortName">i_Addr[14:0]</obj_property>
+      <obj_property name="ObjectShortName">i_Addr[14:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Mem/i_PDataIn">
+      <obj_property name="ElementShortName">i_PDataIn[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_PDataIn[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Mem/o_PDevAddr">
+      <obj_property name="ElementShortName">o_PDevAddr[3:0]</obj_property>
+      <obj_property name="ObjectShortName">o_PDevAddr[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Mem/o_PControl">
+      <obj_property name="ElementShortName">o_PControl[7:0]</obj_property>
+      <obj_property name="ObjectShortName">o_PControl[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_Mem/o_PDataOut">
+      <obj_property name="ElementShortName">o_PDataOut[31:0]</obj_property>
+      <obj_property name="ObjectShortName">o_PDataOut[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Pic/_PicRegisterFile">
+      <obj_property name="ElementShortName">_PicRegisterFile[7:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">_PicRegisterFile[7:0][7:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_level_tb/_dut/_Datapath/_MemAddr">
+      <obj_property name="ElementShortName">_MemAddr[22:0]</obj_property>
+      <obj_property name="ObjectShortName">_MemAddr[22:0]</obj_property>
    </wvobject>
 </wave_config>
